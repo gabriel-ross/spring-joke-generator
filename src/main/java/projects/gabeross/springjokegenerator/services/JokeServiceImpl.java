@@ -6,14 +6,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class JokeServiceImpl implements JokeService {
 
-    private final ChuckNorrisQuotes chuckNorrisQuotes;
+    private final ChuckNorrisQuotes jokeRepo;
 
+    // ordinarily we'd let spring take care of injecting this in the constructor arg, which would
+    // allow compatibility with other joke repositories, but we're just hard-coding this one in
+    // for convenience
     public JokeServiceImpl() {
-        this.chuckNorrisQuotes = new ChuckNorrisQuotes();
+        this.jokeRepo = new ChuckNorrisQuotes();
     }
 
     @Override
     public String getJoke() {
-        return chuckNorrisQuotes.getRandomQuote();
+        return jokeRepo.getRandomQuote();
     }
 }

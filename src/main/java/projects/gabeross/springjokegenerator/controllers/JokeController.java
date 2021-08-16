@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import projects.gabeross.springjokegenerator.services.JokeService;
-import projects.gabeross.springjokegenerator.services.JokeServiceImpl;
 
 @Controller
 public class JokeController {
@@ -31,7 +30,9 @@ public class JokeController {
         // to the string returned by the getJoke() method
         model.addAttribute("joke", joke.getJoke());
 
-        // why are we returning "index" ?
+        // this is the .html template we're linking this controller behavior to
+        // I think when this endpoint is visited it will call this method which will
+        // return the index .html template, filled with the data from the joke model
         return "index";
     }
 }
